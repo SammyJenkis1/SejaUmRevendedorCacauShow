@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenda Cacau Show</title>
+  <link rel="icon" type="image/png" href="https://w7.pngwing.com/pngs/682/206/png-transparent-cacau-show-shopping-centre-caxias-shopping-cacao-tree-parque-shopping-sulacap-others-text-service-logo-thumbnail.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === RESET === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #1b0f07;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* === HERO === */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      background-image: url("https://images.unsplash.com/photo-1609852234998-fbc9d7c9b9f9?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: #f0e6d2;
+    }
+
+    .hero button {
+      padding: 1rem 2.5rem;
+      background: linear-gradient(45deg, #d7b26a, #8b5e34);
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #f5d67d, #a47148);
+    }
+
+    /* === CARROSSEL === */
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .carousel img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .carousel img.active {
+      opacity: 1;
+    }
+
+    .revendedor-section {
+  background: radial-gradient(circle at top, #3b2617 0%, #1d120a 100%);
+  color: #fff;
+  text-align: center;
+  padding: 120px 30px;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Fundo com textura e luz suave */
+.revendedor-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+  opacity: 0.05;
+}
+
+.revendedor-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05), transparent 60%);
+  pointer-events: none;
+}
+
+/* Título */
+.revendedor-title {
+  font-family: "Lora", serif;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: #9af5b1;
+  margin-bottom: 100px;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  animation: fadeDown 1.2s ease;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 90px;
+  position: relative;
+}
+
+/* Linha dourada com brilho */
+.timeline-line {
+  width: 160px;
+  height: 4px;
+  background: linear-gradient(90deg, #eacb93, #fff3c4);
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(255, 240, 200, 0.25);
+  position: relative;
+  overflow: hidden;
+  animation: shineLine 2.5s ease-in-out infinite alternate;
+}
+
+/* Passos */
+.timeline-step {
+  max-width: 260px;
+  text-align: center;
+  transition: all 0.4s ease;
+  animation: fadeUp 1.5s ease;
+}
+
+.timeline-step:hover {
+  transform: translateY(-10px);
+}
+
+.timeline-step h3 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 25px;
+  line-height: 1.5;
+  color: #fffaf0;
+}
+
+.timeline-step p {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: #d8c7b1;
+  margin-top: 8px;
+}
+
+/* Ícones */
+.icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 215, 160, 0.5);
+  background: rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 2rem;
+  color: #ffe7b8;
+  box-shadow: 0 0 20px rgba(255, 215, 160, 0.15);
+  transition: all 0.3s ease;
+}
+
+.icon:hover {
+  box-shadow: 0 0 35px rgba(255, 215, 160, 0.35);
+  transform: scale(1.1);
+}
+
+/* Etapas */
+.start .icon { color: #f5d89c; }
+.middle .icon { color: #ffeab5; background: rgba(255,255,255,0.1); }
+.end .icon { color: gold; text-shadow: 0 0 10px rgba(255, 240, 180, 0.6); }
+
+/* Animações */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shineLine {
+  from { box-shadow: 0 0 15px rgba(255, 240, 200, 0.1); }
+  to { box-shadow: 0 0 25px rgba(255, 240, 200, 0.4); }
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .timeline {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .timeline-line {
+    width: 5px;
+    height: 90px;
+    background: linear-gradient(180deg, #eacb93, #fff3c4);
+  }
+}
+/* === SEÇÃO DE NÍVEIS === */
+.levels-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #1a0e07;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+.levels-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1606813902794-5a5d5e96f6d3?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  filter: brightness(0.3);
+  z-index: 0;
+}
+
+.levels-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1300px;
+  gap: 3rem;
+}
+
+/* === TEXTO === */
+.levels-info {
+  width: 45%;
+  text-align: left;
+}
+
+.levels-info h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #f4c98b;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  margin-bottom: 1rem;
+}
+
+.levels-info h2 span {
+  color: #7ed957;
+  font-weight: 800;
+}
+
+.levels-info p {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #f5e8da;
+}
+
+.levels-info .subtitle {
+  font-size: 1rem;
+  color: #ddd;
+  max-width: 90%;
+}
+
+/* === GRÁFICO === */
+.levels-graph {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+  height: 320px;
+  width: 50%;
+  padding-bottom: 1rem;
+}
+
+/* === BARRAS === */
+.level-bar {
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.level-bar i {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  animation: floatIcon 2s ease-in-out infinite;
+  transition: transform 0.3s;
+}
+
+.level-bar:hover i {
+  transform: scale(1.1);
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.level-name {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #f4c98b;
+}
+
+.bar {
+  position: relative;
+  width: 120px;
+  height: 260px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease;
+}
+
+.bar:hover {
+  transform: translateY(-8px);
+}
+
+.fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: var(--progress);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  border-radius: 20px 20px 0 0;
+  animation: grow 1.8s ease forwards;
+  overflow: hidden;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.fill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255,255,255,0.25);
+  transform: skewX(-25deg);
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { left: -80%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
+}
+
+.fill span {
+  position: relative;
+  z-index: 2;
+}
+
+/* === CORES === */
+.level-bar.grao i { color: #d3a473; }
+.level-bar.cacau i { color: #b6824a; }
+.level-bar.chocolate i { color: #9b6b43; }
+.level-bar.coracao i { color: #f17b7b; }
+
+.level-bar.grao .fill {
+  background: linear-gradient(180deg, #e3b676, #7b4a2d);
+}
+.level-bar.cacau .fill {
+  background: linear-gradient(180deg, #c98a4d, #5a3218);
+}
+.level-bar.chocolate .fill {
+  background: linear-gradient(180deg, #a66e47, #3b2313);
+}
+.level-bar.coracao .fill {
+  background: linear-gradient(180deg, #f57c7c, #b54b4b);
+}
+
+/* === ANIMAÇÕES === */
+@keyframes grow {
+  from { height: 0; }
+  to { height: var(--progress); }
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 900px) {
+  .levels-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .levels-info, .levels-graph {
+    width: 100%;
+  }
+  .bar {
+    width: 90px;
+    height: 220px;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@600&display=swap');
+
+.why-cacau {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  background: linear-gradient(135deg, #2c1a11 0%, #3d2214 100%);
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+}
+
+/* Lado esquerdo */
+.why-left {
+  flex: 1;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeInLeft 1.2s ease;
+}
+
+.why-left h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #ffd271;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.why-left h2 span {
+  color: #fff;
+}
+
+/* Cards */
+.why-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.why-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 1.8rem;
+  text-align: left;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Ícones modernos */
+.why-card i {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, #ffd271, #ffb347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  filter: drop-shadow(0 0 6px rgba(255, 210, 113, 0.5));
+}
+
+.why-card h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.why-card p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e8dccc;
+}
+
+/* Lado direito */
+.why-right {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  animation: fadeInRight 1.2s ease;
+}
+
+.why-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) saturate(1.2);
+  transition: all 1s ease;
+}
+
+.why-right:hover img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+/* Animações */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .why-cacau {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .why-left {
+    padding: 3rem 2rem;
+  }
+
+  .why-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .why-right {
+    height: 300px;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@600&display=swap');
+
+/* === SEÇÃO BENEFÍCIOS === */
+.benefits {
+  height: 100vh;
+  background: linear-gradient(135deg, #3b1f13 0%, #2c1a11 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefits::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 220, 150, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.benefits-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  animation: fadeInUp 1.2s ease;
+}
+
+.benefits h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: 2.8rem;
+  color: #ffd271;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.benefits h2 span {
+  color: #fff;
+}
+
+.benefits-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  color: #f3e6d0;
+  margin-bottom: 3rem;
+}
+
+/* Cards */
+.benefits-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.benefit-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  backdrop-filter: blur(8px);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+.benefit-card i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffd271, #ffb347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 6px rgba(255, 210, 113, 0.5));
+}
+
+.benefit-card h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.benefit-card p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #f1e2cc;
+}
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo */
+@media (max-width: 1000px) {
+  .benefits-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .benefits-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits {
+    height: auto;
+    padding: 3rem 1.5rem;
+  }
+}
+ /* === Seção Principal === */
+  .produtos-aceitacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 5rem 10%;
+    background: linear-gradient(135deg, #255025, #00ff2a);
+    color: #fff;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+  }
+
+  /* === Texto === */
+  .texto-produtos {
+    flex: 1;
+    max-width: 40%;
+  }
+
+  .texto-produtos h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .texto-produtos h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: #ffcc80;
+    border-radius: 2px;
+    margin-top: 8px;
+  }
+
+  .texto-produtos p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #f3e5ab;
+  }
+
+  /* === Carrossel === */
+  .vitrine-slider {
+    position: relative;
+    flex: 1.2;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .vitrine-slider .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .vitrine-slider .slide.active {
+    opacity: 1;
+  }
+
+  .vitrine-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(85%);
+    transition: transform 1.5s ease;
+  }
+
+  .vitrine-slider .slide.active img {
+    transform: scale(1.05);
+  }
+
+  .vitrine-slider .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+  }
+
+  .vitrine-slider h3 {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    font-size: 1.6rem;
+    color: #fff8e1;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* === Botões Navegação === */
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    padding: 0.6rem 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .nav-btn.prev { left: 15px; }
+  .nav-btn.next { right: 15px; }
+
+  /* === Responsivo === */
+  @media (max-width: 900px) {
+    .produtos-aceitacao {
+      flex-direction: column;
+      text-align: center;
+    }
+    .texto-produtos {
+      max-width: 90%;
+    }
+    .vitrine-slider {
+      width: 90%;
+      height: 350px;
+    }
+  }
+  .store-carousel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.store-carousel .slide {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+}
+
+.store-carousel .slide.active {
+  left: 0;
+}
+
+.store-info {
+  background: rgba(20, 20, 20, 0.6);
+  padding: 3rem;
+  border-radius: 12px;
+  margin-left: 6%;
+  max-width: 480px;
+  animation: fadeIn 1.5s ease;
+}
+
+.store-info h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: #d4af37;
+  font-weight: 600;
+}
+
+.store-info p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.store-info .desc {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #f2f2f2;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.nav:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.prev { left: 30px; }
+.next { right: 30px; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.revenda-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('https://assets.multiplan.com.br/Multiplan/filer_public/be/c4/bec420c8-5562-4239-861d-52a5c5de9189/cacau_show_mega_0001.webp') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.revenda-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.revenda-content {
+  text-align: center;
+  color: #fff;
+  max-width: 800px;
+  padding: 2rem;
+  animation: fadeInUp 1.2s ease;
+}
+
+.revenda-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 0 12px rgba(255,215,0,0.3);
+}
+
+.revenda-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: #f2f2f2;
+}
+
+.whatsapp-btn {
+  display: inline-block;
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  padding: 18px 35px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .revenda-content h1 {
+    font-size: 2.2rem;
+  }
+  .revenda-content p {
+    font-size: 1rem;
+  }
+  .whatsapp-btn {
+    font-size: 1rem;
+    padding: 14px 28px;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Revenda Cacau Show</h1>
+      <p>Transforme sua paixão pelo chocolate em um negócio doce e lucrativo com a Cacau Show.</p>
+      <button>Quero ser revendedor</button>
+    </div>
+  </section>
+
+  <!-- CARROSSEL -->
+  <section class="carousel">
+    <img src="https://foodbizbrasil.com/wp-content/uploads/2025/10/bendito-cacao.png" class="active" alt="">
+    <img src="https://www.publicitarioscriativos.com/wp-content/uploads/2025/07/No-Dia-do-Chocolate7-de-julho-Cacau-Show-distribuira-1-milhao-detrufas-em-todo-o-Brasil.jpg" alt="">
+    <img src="https://static.wixstatic.com/media/6cd7ee_56d8a9ab33c4433dbda27f4d377d77e3~mv2.jpg/v1/fill/w_960,h_529,al_c,lg_1,q_85/6cd7ee_56d8a9ab33c4433dbda27f4d377d77e3~mv2.jpg" alt="">
+  </section>
+
+  <section class="revendedor-section">
+  <h2 class="revendedor-title">Ser revendedor Cacau Show é simples</h2>
+
+  <div class="timeline">
+    <div class="timeline-step start">
+      <div class="icon">
+        <i class="fas fa-circle"></i>
+      </div>
+      <h3>Entre em contato no WhatsApp</h3>
+      <p>Dê o primeiro passo com a gente.</p>
+    </div>
+
+    <div class="timeline-line"></div>
+
+    <div class="timeline-step middle">
+      <div class="icon">
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+      <h3>Vá até a loja cadastrada e faça seu pedido inicial</h3>
+      <p>Comece sua jornada com produtos que todo mundo ama.</p>
+    </div>
+
+    <div class="timeline-line"></div>
+
+    <div class="timeline-step end">
+      <div class="icon">
+        <i class="fas fa-star"></i>
+      </div>
+      <h3>Inicie suas vendas!</h3>
+      <p>Transforme sua paixão em sucesso!</p>
+    </div>
+  </div>
+</section>
+</section>
+
+  <section class="levels-section">
+  <div class="levels-bg"></div>
+  <div class="levels-container">
+    
+    <!-- Texto lateral -->
+    <div class="levels-info">
+      <h2>Alcance <span>lucros de 33%</span> com a Cacau Show!</h2>
+      <p>E conquiste o coração dos seus clientes ❤️</p>
+      <p class="subtitle">Quanto mais você cresce: mais reconhecimento, mais conquistas e lucros ainda maiores.</p>
+    </div>
+
+    <!-- Gráfico vertical -->
+    <div class="levels-graph">
+
+      <div class="level-bar grao" style="--progress: 25%;">
+        <i class="ph ph-seed"></i>
+        <span class="level-name">Grão</span>
+        <div class="bar"><div class="fill"><span>22%</span></div></div>
+      </div>
+
+      <div class="level-bar cacau" style="--progress: 50%;">
+        <i class="ph ph-leaf"></i>
+        <span class="level-name">Cacau</span>
+        <div class="bar"><div class="fill"><span>25%</span></div></div>
+      </div>
+
+      <div class="level-bar chocolate" style="--progress: 75%;">
+        <i class="ph ph-cookie"></i>
+        <span class="level-name">Chocolate</span>
+        <div class="bar"><div class="fill"><span>28%</span></div></div>
+      </div>
+
+      <div class="level-bar coracao" style="--progress: 100%;">
+        <i class="ph ph-heart-straight"></i>
+        <span class="level-name">Coração</span>
+        <div class="bar"><div class="fill"><span>33%</span></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="why-cacau">
+  <div class="why-left">
+    <h2>Por que escolher a <span>Cacau Show Videira</span>?</h2>
+
+    <div class="why-cards">
+      <div class="why-card">
+        <i class="fas fa-award"></i>
+        <h3>Tradição e Qualidade</h3>
+        <p>Mais de 17 anos oferecendo chocolates artesanais de alto padrão e experiências únicas.</p>
+      </div>
+
+      <div class="why-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Parceria Real</h3>
+        <p>Suporte próximo e constante, ajudando você a crescer em cada etapa.</p>
+      </div>
+
+      <div class="why-card">
+        <i class="fas fa-coins"></i>
+        <h3>Lucros Reais</h3>
+        <p>Margens atrativas e recompensas que aumentam conforme seu desempenho.</p>
+      </div>
+
+      <div class="why-card">
+        <i class="fas fa-store"></i>
+        <h3>Presença Local</h3>
+        <p>Com sede em Videira, oferecemos agilidade, confiança e um atendimento de excelência.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-right">
+    <img src="https://videirashopping.com.br/wp-content/uploads/2023/07/Cacau-Show.png" alt="Loja Cacau Show Videira">
+  </div>
+</section>
+<section class="benefits">
+  <div class="benefits-content">
+    <h2>Benefícios <span>Exclusivos</span></h2>
+    <p class="benefits-subtitle">Descubra as vantagens de revender com a <strong>Cacau Show Videira</strong>.</p>
+
+    <div class="benefits-cards">
+      <div class="benefit-card">
+        <i class="fas fa-box-open"></i>
+        <h3>Variedade de Produtos</h3>
+        <p>Mais de 200 opções deliciosas que encantam clientes e aumentam suas vendas.</p>
+      </div>
+
+      <div class="benefit-card">
+        <i class="fas fa-hand-holding-heart"></i>
+        <h3>Atendimento Próximo</h3>
+        <p>Suporte direto da nossa equipe em Videira, com acompanhamento personalizado.</p>
+      </div>
+
+      <div class="benefit-card">
+        <i class="fas fa-bullseye"></i>
+        <h3>Reconhecimento</h3>
+        <p>Programas de incentivo e recompensas para quem se destaca nas vendas.</p>
+      </div>
+
+      <div class="benefit-card">
+        <i class="fas fa-truck"></i>
+        <h3>Entrega Rápida</h3>
+        <p>Agilidade e confiança na reposição dos seus produtos — sem complicação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="produtos-aceitacao">
+  <div class="texto-produtos">
+    <h2>Produtos com alta aceitação</h2>
+    <p>
+      Venda rápida, campanhas fortes e oportunidades de crescimento.<br>
+      Com a força da marca e o seu esforço, o resultado vem.<br>
+      E vem com sabor de conquista 🍫
+    </p>
+  </div>
+
+  <div class="vitrine-slider" id="produtosVitrine">
+    <div class="slide active">
+      <img src="https://http2.mlstatic.com/D_NQ_NP_612105-MLB44633916986_012021-O-4-tabletes-lacreme-chocolate-ao-leite-e-branco-da-cacau-show.webp" alt="Tabletes LaCreme">
+      <div class="overlay"></div>
+      <h3>Tabletes LaCreme</h3>
+    </div>
+
+    <div class="slide">
+      <img src="https://static.wixstatic.com/media/6cd7ee_7e70d41ebd2942e6b754ca292ad407be~mv2.webp/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6cd7ee_7e70d41ebd2942e6b754ca292ad407be~mv2.webp" alt="Trufas Cacau Show">
+      <div class="overlay"></div>
+      <h3>Trufas Clássicas</h3>
+    </div>
+
+    <div class="slide">
+      <img src="https://revistadegusta.com/wp-content/uploads/2024/12/handler-8.png" alt="Campanhas">
+      <div class="overlay"></div>
+      <h3>Campanhas</h3>
+    </div>
+
+    <div class="slide">
+      <img src="https://www.publicitarioscriativos.com/wp-content/uploads/2025/09/Cacau-Show-lanca-lata-Chapeu-Seletor-Harry-Potter-para-o-Dia-das-Criancas.jpg" alt="Coleção Especial">
+      <div class="overlay"></div>
+      <h3>Coleção Especial</h3>
+    </div>
+
+    <button class="nav-btn prev">❮</button>
+    <button class="nav-btn next">❯</button>
+  </div>
+</section>
+<section id="lojasCacauShow" class="store-carousel">
+  <div class="slide active" style="background-image: url('saul.jpg');">
+    <div class="store-info">
+      <h2>Cacau Show Videira – Saul Brandalise</h2>
+      <p>R. Saul Brandalise, 45 – Centro, Videira/SC</p>
+      <p>🕒 Seg a Sáb: 08:30h às 18:30h</p>
+      <p class="desc">Nossa loja com ambiente acolhedor, aromas irresistíveis e os melhores chocolates da região.</p>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image: url('https://videirashopping.com.br/wp-content/uploads/2023/07/Cacau-Show.png');">
+    <div class="store-info">
+      <h2>Cacau Show Videira – Shopping</h2>
+      <p>Av. Dom Pedro II – Bairro Estação</p>
+      <p>🕒 Seg a Sáb: 08:30h às 22h</p>
+      <p>🕒 Dom 14:00 às 20:00<p>
+      <p class="desc">Local moderno e charmoso, perfeito para quem quer saborear e presentear com muito estilo e sofisticação.</p>
+    </div>
+  </div>
+
+  <button class="nav prev">❮</button>
+  <button class="nav next">❯</button>
+</section>
+<section class="revenda-section">
+  <div class="revenda-overlay">
+    <div class="revenda-content">
+      <h1>Transforme sua paixão pelo chocolate em um negócio doce e lucrativo</h1>
+      <p>Seja revendedor Cacau Show e conquiste clientes com produtos que todos amam!</p>
+      <a href="https://wa.me/554991099778" target="_blank" class="whatsapp-btn">
+        Quero ser revendedor
+      </a>
+    </div>
+  </div>
+</section>
+  <script>
+    // === CARROSSEL AUTOMÁTICO ===
+    const slides = document.querySelectorAll(".carousel img");
+    let index = 0;
+    setInterval(() => {
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }, 4000);
+    (function () {
+  const sliderRoot = document.getElementById('produtosVitrine');
+  if (!sliderRoot) return;
+
+  const slides = Array.from(sliderRoot.querySelectorAll('.slide'));
+  const btnPrev = sliderRoot.querySelector('.prev');
+  const btnNext = sliderRoot.querySelector('.next');
+
+  let index = 0;
+  let autoplayInterval = null;
+  const AUTOPLAY_DELAY = 5000;
+
+  function showSlide(n) {
+    index = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+  }
+
+  function next() { showSlide(index + 1); }
+  function prev() { showSlide(index - 1); }
+
+  if (btnNext) btnNext.addEventListener('click', () => { next(); resetAutoplay(); });
+  if (btnPrev) btnPrev.addEventListener('click', () => { prev(); resetAutoplay(); });
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => next(), AUTOPLAY_DELAY);
+  }
+  function stopAutoplay() {
+    if (autoplayInterval) { clearInterval(autoplayInterval); autoplayInterval = null; }
+  }
+  function resetAutoplay() { startAutoplay(); }
+
+  sliderRoot.addEventListener('mouseenter', stopAutoplay);
+  sliderRoot.addEventListener('mouseleave', startAutoplay);
+  sliderRoot.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { next(); resetAutoplay(); }
+    if (e.key === 'ArrowLeft') { prev(); resetAutoplay(); }
+  });
+
+  sliderRoot.setAttribute('tabindex', '0');
+  showSlide(0);
+  startAutoplay();
+})();
+// === CARROSSEL DE LOJAS ===
+(function () {
+  const sliderRoot = document.getElementById('lojasCacauShow');
+  if (!sliderRoot) return;
+
+  const slides = Array.from(sliderRoot.querySelectorAll('.slide'));
+  const btnPrev = sliderRoot.querySelector('.prev');
+  const btnNext = sliderRoot.querySelector('.next');
+
+  let index = 0;
+
+  function showSlide(n) {
+    index = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+  }
+
+  function next() { showSlide(index + 1); }
+  function prev() { showSlide(index - 1); }
+
+  if (btnNext) btnNext.addEventListener('click', next);
+  if (btnPrev) btnPrev.addEventListener('click', prev);
+
+  sliderRoot.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  sliderRoot.setAttribute('tabindex', '0');
+  showSlide(0);
+})();
+// Seleciona o botão
+const btnRevendedor = document.querySelector('.hero button');
+
+// Abre o WhatsApp ao clicar
+btnRevendedor.addEventListener('click', () => {
+  window.open('https://wa.me/554991099778', '_blank');
+});
+  </script>
+</body>
+</html>
