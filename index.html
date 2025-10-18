@@ -239,12 +239,11 @@
   to { box-shadow: 0 0 25px rgba(255, 240, 200, 0.4); }
 }
 
-/* === RESPONSIVIDADE PARA CELULAR === */
-@media (max-width: 480px) {
-  /* Seção inteira */
-  .levels-section {
-    height: auto; /* Evita scroll gigante */
-    padding: 2rem 1rem;
+/* Responsividade */
+@media (max-width: 900px) {
+  .timeline {
+    flex-direction: column;
+    gap: 60px;
   }
 
   .timeline-line {
@@ -1016,6 +1015,48 @@
     padding: 14px 28px;
   }
 }
+/* === RESPONSIVIDADE PARA CELULAR === */
+@media (max-width: 480px) {
+  .levels-section {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .levels-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .levels-info {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .levels-info h2 { font-size: 1.8rem; }
+  .levels-info p, .levels-info .subtitle { font-size: 1rem; }
+
+  .levels-graph {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    height: auto; /* importante para barras grandes */
+  }
+
+  .level-bar {
+    flex: 1 1 40%; 
+    max-width: 120px;
+    margin-bottom: 1.5rem;
+  }
+
+  .level-bar i { font-size: 2rem; margin-bottom: 0.5rem; }
+  .level-name { font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .bar { width: 100%; height: 180px; } /* altura menor para caber no celular */
+  .fill { font-size: 0.9rem; }
+}
+
   </style>
 </head>
 <body>
